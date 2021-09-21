@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'candidatos'
+      # Nome do usuario
+      MYSQL_USER: 'user'
+      # Senha
+      MYSQL_PASSWORD: 'root'
+      # Senha para acesso root
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      # <Porta exposta> : <Porta do MYSQL rodando dentro do container>
+      - '3306:3306'
+    expose:
+      # Abri a porta 3306 dentro do conatiner
+      - '3306'
+      # Onde os dados serão salvos
+    volumes:
+      - my-db:/var/lib/mysql
+# Nome do volume
+volumes:
+  my-db:
